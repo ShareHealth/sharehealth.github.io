@@ -17,11 +17,7 @@
 
         <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
             <a-marker type='barcode' value='1'>
-                <a-video src="#inspiration" position="0 0.5 0" rotation="270 0 0" play="true" scale="7.12 4"></a-video>
-            </a-marker>
-
-            <a-marker type='barcode' value='2'>
-                <a-video src="#funny" position="0 0.5 0" rotation="270 0 0" play="true" scale="7.12 4"></a-video>
+                <a-video src="#inspiration" position="0 0.5 0" rotation="270 0 0" play="true" scale="7.12 4" vidhandler></a-video>
             </a-marker>
  
             <a-entity camera></a-entity>
@@ -29,16 +25,23 @@
         
 
         <script>
-            window.addEventListener('load', function () {
-            var v = document.querySelector('#inspiration');
-            v.play();
-            });
+            AFRAME.registerComponent('vidhandler', {
+  init: function () {
+    this.toggle = false;
+    document.querySelector("#inspiration").pause(); //reference to the video
+  },
+  tick:function(){  
+   if(document.querySelector("a-marker").object3D.visible == true){
+     if(!this.toggle){
+       this.toggle = true;
+       document.querySelector("#inspiration").play();
+     }
+   }else{
+     this.toggle = false;
+     document.querySelector("#inspiration").pause();
+   }
+  }
+});
         </script>
-        <script>
-            window.addEventListener('load', function () {
-            var v = document.querySelector('#funny');
-            v.play();
-            });
-          </script>
     </body>
 </html>
