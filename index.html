@@ -29,22 +29,9 @@
         
 
         <script>
-            AFRAME.registerComponent('vidhandler', {
-                init: function() {
-                    this.toggle = false;
-                    document.querySelector("#inspiration").pause();
-                },
-                tick:function() {
-                    if(document.querySelector("a-marker").object3D.visible == true) {
-                        if(!this.toggle) {
-                            this.toggle = true;
-                            document.querySelector("#inspiration").play();
-                        }
-                    } else {
-                        this.toggle = false;
-                        document.querySelector("#inspiration").pause();
-                    }
-                }
+            window.addEventListener('load', function () {
+            var v = document.querySelector('#inspiration');
+            v.play();
             });
         </script>
         <script>
