@@ -24,11 +24,10 @@
                 <a-video src="#funny" position="0 0.5 0" rotation="270 0 0" play="true" scale="7.12 4"></a-video>
             </a-marker>
             
-            <a-marker preset='hiro'>
-  <!-- here define the content to display on top of the marker -->
-  <a-box position='0 0.5 0' material='color: red;'></a-box>
-</a-marker>
- 
+            <a-marker type='barcode' value='16'>
+                <a-video src="#funny" position="0 0.5 0" rotation="270 0 0" play="true" scale="7.12 4"></a-video>
+            </a-marker>
+            
             <a-entity camera></a-entity>
         </a-scene>
         
